@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 public class Player : MonoBehaviour {
 
@@ -16,8 +18,14 @@ public class Player : MonoBehaviour {
 	public Color colorPink;
 
 	ScoreManager scoreObject;
+	public static Player instance;
+	public int score = 0;
+    private void Awake()
+    {
+		instance = this;
+    }
 
-	void Start ()
+    void Start ()
 	{
 		SetRandomColor();
 		scoreObject = GameObject.Find("ScoreText").GetComponent<ScoreManager>();
@@ -42,6 +50,7 @@ public class Player : MonoBehaviour {
 			ObstacleManager.Instance.AddToPool(otherParent);
 			col.gameObject.SetActive(true);
 			scoreObject.updateScore();
+			SaveData();
 			return;
 		}
 		else if(col.tag == "None")
@@ -79,5 +88,14 @@ public class Player : MonoBehaviour {
 				sr.color = colorPink;
 				break;
 		}
+	}
+	public void SaveData()
+	{
+		string filePath = UnityEngine.Application.persistentDataPath + "/PlayerScore.file";
+		FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate);
+		BinaryWriter bw = new BinaryWriter(fs);
+		bw.Write(ScoreManager.instance.score);
+		fs.Close();
+		bw.Close();
 	}
 }

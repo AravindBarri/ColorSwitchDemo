@@ -6,7 +6,12 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
     Text scoreText;
-    int score = 0;
+    public int score = 0;
+    public static ScoreManager instance;
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Start()
     {
         scoreText = this.GetComponent<Text>();
@@ -15,6 +20,7 @@ public class ScoreManager : MonoBehaviour
     {
         score++;
         scoreText.text = "Score : " + score;
+        print("Score" + score);
     }
-    
+
 }
