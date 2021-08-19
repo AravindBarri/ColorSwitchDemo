@@ -1,0 +1,4 @@
+Cyan : 35E2F2
+Yellow : F6DF0E
+Magenta : 8C13FB
+Pink : FF0080
