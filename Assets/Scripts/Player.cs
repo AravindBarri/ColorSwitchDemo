@@ -15,9 +15,12 @@ public class Player : MonoBehaviour {
 	public Color colorMagenta;
 	public Color colorPink;
 
+	ScoreManager scoreObject;
+
 	void Start ()
 	{
 		SetRandomColor();
+		scoreObject = GameObject.Find("ScoreText").GetComponent<ScoreManager>();
 	}
 	
 	// Update is called once per frame
@@ -33,14 +36,22 @@ public class Player : MonoBehaviour {
 		if (col.tag == "ColorChanger")
 		{
 			SetRandomColor();
-			Destroy(col.gameObject);
+			col.gameObject.SetActive(false);
+			GameObject other = col.gameObject;
+			GameObject otherParent = other.transform.parent.gameObject;
+			ObstacleManager.Instance.AddToPool(otherParent);
+			col.gameObject.SetActive(true);
+			scoreObject.updateScore();
 			return;
 		}
-
+		else if(col.tag == "None")
+        {
+			return;
+        }
 		if (col.tag != currentColor)
 		{
 			Debug.Log("GAME OVER!");
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+			SceneManager.LoadScene(3);
 
 		}
 	}
@@ -48,7 +59,7 @@ public class Player : MonoBehaviour {
 	void SetRandomColor ()
 	{
 		int index = Random.Range(0, 4);
-
+		ObstacleManager.Instance.SpawnObstacle();
 		switch (index)
 		{
 			case 0:

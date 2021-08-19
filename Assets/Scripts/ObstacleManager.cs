@@ -36,7 +36,7 @@ public class ObstacleManager : MonoBehaviour
     {
         if (ObstacleStack.Count == 0)
         {
-            CreateObstacles(10);
+            CreateObstacles(3);
         }
 
         int index = Random.Range(0, obstacles.Length);
@@ -48,10 +48,13 @@ public class ObstacleManager : MonoBehaviour
     }
     void CreateObstacles(int value)
     {
-        int maxrange = obstacles.Length;
-        int r = Random.Range(0, maxrange);
-        ObstacleStack.Push(Instantiate(obstacles[r]));
-        ObstacleStack.Peek().SetActive(false);
+        for (int i = 0; i < value; i++)
+        {
+            int maxrange = obstacles.Length;
+            int r = Random.Range(0, maxrange);
+            ObstacleStack.Push(Instantiate(obstacles[r]));
+            ObstacleStack.Peek().SetActive(false);
+        }
     }
     public void AddToPool(GameObject tempObj)
     {

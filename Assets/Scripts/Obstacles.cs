@@ -9,6 +9,7 @@ public class Obstacles : MonoBehaviour
     void Start()
     {
         tempRigidbody = GetComponent<Rigidbody2D>();
+        //StartCoroutine(StartSpawn());
     }
     // Start is called before the first frame update
    
@@ -34,7 +35,7 @@ public class Obstacles : MonoBehaviour
     IEnumerator PushToStack()
     {
         yield return new WaitForSeconds(2);
-        ObstacleManager.Instance.AddToPool(tempRigidbody.gameObject);
+        ObstacleManager.Instance.AddToPool(this.gameObject);
     }
     IEnumerator StartSpawn()
     {

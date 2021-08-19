@@ -10,6 +10,7 @@ TagManager:
   - Magenta
   - Cyan
   - DestroyPoint
+  - None
   layers:
   - Default
   - TransparentFX

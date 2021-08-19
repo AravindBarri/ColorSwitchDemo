@@ -394,13 +394,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1041034019670543156}
   - component: {fileID: 6106722324931321876}
+  - component: {fileID: 8063043471717650838}
   m_Layer: 0
   m_Name: Small Square
-  m_TagString: Untagged
+  m_TagString: None
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1041034019670543156
 Transform:
   m_ObjectHideFlags: 0
@@ -429,6 +430,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf8b07838710b0c4eafced451e98729c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &8063043471717650838
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5572981253895725891}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &6001608254000948994
 GameObject:
   m_ObjectHideFlags: 0
